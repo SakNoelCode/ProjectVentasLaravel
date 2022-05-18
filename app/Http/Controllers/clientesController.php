@@ -17,7 +17,7 @@ class clientesController extends Controller
      * store: Guarda los clientes, añade un nuevo registro
      * update: Actualiza los clientes
      * destroy: Elimina un cliente
-     * edit: muestra el formulario de edición 
+     * show: muestra el formulario de edición 
      */
 
      public function store(Request $request){
@@ -30,7 +30,7 @@ class clientesController extends Controller
          $request->validate([
              'name' => 'required',
              'surname' => 'required',
-             'dni' => 'required',
+             'dni' => 'required|max:8|min:8',
              'address' => 'required'
          ]);
 
@@ -44,7 +44,52 @@ class clientesController extends Controller
          /**Guardamos los valores */
          $cliente -> save();
 
-         /**Redirigimos a una determinada ruta */
+         /**Redirigimos a una determinada ruta con un mensaje */
          return redirect()-> route('clientes')->with('success','Cliente añadido');
      }
-}
+
+     public function index(){
+         /**a la variable clientes se le asigna el modelo Cliente de la base de datos
+          * Contiene todos los valores de la base de datos
+          */
+         $clientes = clientes::all();
+         /**Cuando sea llamado devolverá una lista de todos los clientes */
+         return view('Clientes.clientes', ['clientes' => $clientes]); 
+     }
+
+
+     /**Dado que se nos esta enviando una solicitud, debemos utlizar la variable $request para
+      * obtener los valores de la petición
+      */
+     public function update(Request $request, $id){
+         /**Se asigna a la variable cliente aquel que tenga el ID que hallo en su búsqueda */
+         $cliente = clientes::find($id);
+         /**Se actualiza los valores de la tabla */
+         $cliente -> Name = $request -> name;
+         $cliente -> Surname = $request -> surname;
+         $cliente -> DNI = $request -> dni;
+         $cliente -> Address = $request -> address;
+         /*Guardar valores*/
+         $cliente -> save();
+
+         /*   Usado para hacer Debug:   dd($request);*/
+         /**Redirigimos a una vista con un mensaje */
+         return redirect()-> route('clientes')->with('success','Cliente actualizado');
+     }
+
+     public function destroy($id){
+         /**Se asigna a la variable cliente aquel que tenga el ID que hallo en su búsqueda */
+         $cliente = Clientes::find($id);
+         /**Elimar valor */
+         $cliente -> delete();
+         /**Redirigimos a una vista con un mensaje */
+         return redirect()-> route('clientes')->with('success','Cliente eliminado');
+     }
+
+     public function show($id){
+         /**Se asigna a la variable cliente aquel que tenga el ID que hallo en su búsqueda */
+         $cliente = Clientes::find($id); 
+         /**Se retorna la vista show, enviando como parametro al Cliente */
+         return view('Clientes.show',['Cliente' => $cliente]);
+     }
+} 

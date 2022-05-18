@@ -24,8 +24,7 @@ Route::view('/', 'layout') -> name('home');
 Route::view('/Bienvenida','welcome') -> name('welcome');
 
 /* Retornar la vista CrudClientes cuando estemos en la ruta /Clientes*/
-Route::view('/Clientes','Clientes.crudClientes') -> name('clientes');
-
+Route::view('/Clientes','Clientes.clientes') -> name('clientes');
 
 
 
@@ -35,3 +34,25 @@ Route::view('/Clientes','Clientes.crudClientes') -> name('clientes');
  * en este ejemplo se llama a la clase ClientesController
  * y a su función store */
 Route::post('/Clientes', [clientesController::class,'store']) -> name('clientes');
+
+
+/*------------------RETORNAR CUANDO SE EJECUTEN METODOS GET---------------*/
+
+/**Establecer ruta para cuando la comunicación sea get, 
+ * en este ejemplo se llama a la clase ClientesController
+ * y a su función index 
+ * Los métodos GET se llaman automaticamente cuando se ejecute la ruta*/
+Route::get('/Clientes', [clientesController::class,'index']) -> name('clientes');
+/**La ruta debe contener un ID y se ejecutará la función show*/
+Route::get('/Clientes/{id}', [clientesController::class,'show']) -> name('clientes-show');
+
+
+/*------------------RETORNAR CUANDO SE EJECUTEN OTROS METODOS PATCH O PUT, ETC---------------*/
+/*PATCH se usa para actualizar datos parciales (algunos campos) 
+ * PUT se usa para actualizar todos los datos (todos los campos).
+ * DELETE se usa para eliminar un registro de la base de datos*/
+
+ /**La ruta debe contener un ID y se ejecutará la función update*/
+Route::patch('/Clientes/{id}', [clientesController::class,'update']) -> name('clientes-update'); 
+ /**La ruta debe contener un ID y se ejecutará la función destroy*/
+Route::delete('/Clientes/{id}', [clientesController::class,'destroy']) -> name('clientes-destroy');
