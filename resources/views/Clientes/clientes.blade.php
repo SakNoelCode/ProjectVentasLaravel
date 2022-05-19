@@ -12,7 +12,7 @@
     <h1 class="text-center">Clientes</h1>
 </div>
 
-<div class="container w-50 border border-primary p-4 mt-3">
+<div class="container w-50 border border-primary rounded p-4 mt-3">
 
     <!---Formulario Cliente--->
 

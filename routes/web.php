@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\clientesController;
+use App\Http\Controllers\productosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*------------------RETORNAR VISTAS--------------------*/
+/*Retornar la vista Welcome cuando Estemos en la ruta /Bienvenida   DEFAULT*/ 
+Route::view('/Bienvenida','welcome') -> name('welcome');
+
 /*Retornar La vista app cuando accedamos a la ruta raíz */
 Route::view('/', 'layout') -> name('home');
 
-/*Retornar la vista Welcome cuando Estemos en la ruta /Bienvenida*/
-Route::view('/Bienvenida','welcome') -> name('welcome');
-
-/* Retornar la vista CrudClientes cuando estemos en la ruta /Clientes*/
+/* Retornar la vista clientes cuando estemos en la ruta /Clientes*/
 Route::view('/Clientes','Clientes.clientes') -> name('clientes');
 
+/**Retornar la Vista productos cuando estemos en la ruta /Productos */
+Route::view('/Productos','Productos.productos') -> name('productos');
 
 
 /*------------------RETORNAR CUANDO SE EJECUTEN METODOS POST---------------*/
@@ -34,6 +37,8 @@ Route::view('/Clientes','Clientes.clientes') -> name('clientes');
  * en este ejemplo se llama a la clase ClientesController
  * y a su función store */
 Route::post('/Clientes', [clientesController::class,'store']) -> name('clientes');
+
+Route::post('/Productos',[productosController::class,'store']) -> name('productos');
 
 
 /*------------------RETORNAR CUANDO SE EJECUTEN METODOS GET---------------*/
@@ -45,6 +50,8 @@ Route::post('/Clientes', [clientesController::class,'store']) -> name('clientes'
 Route::get('/Clientes', [clientesController::class,'index']) -> name('clientes');
 /**La ruta debe contener un ID y se ejecutará la función show*/
 Route::get('/Clientes/{id}', [clientesController::class,'show']) -> name('clientes-show');
+
+Route::get( '/Productos',[productosController::class,"index"]) -> name('productos');
 
 
 /*------------------RETORNAR CUANDO SE EJECUTEN OTROS METODOS PATCH O PUT, ETC---------------*/

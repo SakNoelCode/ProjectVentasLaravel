@@ -40,6 +40,9 @@
             <!---{{route('clientes')}} -> Nos permite dirigirnos a la ruta con ese nombre --->
             <a class="nav-link" href="{{route('clientes')}}">Clientes</a>
           </li>
+          <div class="nav-item">
+            <a class="nav-link" href="{{ route('productos') }}">Productos</a>
+          </div>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Reportes</a>
           </li>
