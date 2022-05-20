@@ -53,6 +53,8 @@ Route::get('/Clientes/{id}', [clientesController::class,'show']) -> name('client
 
 Route::get( '/Productos',[productosController::class,"index"]) -> name('productos');
 
+Route::get('/Productos/{id}',[productosController::class,'show'])->name('productos-show');
+
 
 /*------------------RETORNAR CUANDO SE EJECUTEN OTROS METODOS PATCH O PUT, ETC---------------*/
 /*PATCH se usa para actualizar datos parciales (algunos campos) 
@@ -63,3 +65,8 @@ Route::get( '/Productos',[productosController::class,"index"]) -> name('producto
 Route::patch('/Clientes/{id}', [clientesController::class,'update']) -> name('clientes-update'); 
  /**La ruta debe contener un ID y se ejecutará la función destroy*/
 Route::delete('/Clientes/{id}', [clientesController::class,'destroy']) -> name('clientes-destroy');
+
+Route::patch('/Productos/{id}',[productosController::class,'update'])->name('productos-update');
+
+Route::delete('/Productos/{id}',[productosController::class,'destroy'])->name('productos-destroy');
+

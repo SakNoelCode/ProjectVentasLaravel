@@ -62,6 +62,13 @@ class clientesController extends Controller
       * obtener los valores de la petición
       */
      public function update(Request $request, $id){
+
+        $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'dni' => 'required|max:8|min:8',
+            'address' => 'required'
+        ]);
          /**Se asigna a la variable cliente aquel que tenga el ID que hallo en su búsqueda */
          $cliente = clientes::find($id);
          /**Se actualiza los valores de la tabla */

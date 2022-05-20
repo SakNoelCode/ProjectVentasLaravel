@@ -57,31 +57,30 @@
     <table class="table table-bordered border-primary">
         <thead>
             <tr class="table-primary">
-                <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>           
             @foreach ($productos as $producto)
             <tr>
-                <th scope="row">{{$producto->id}} </th>
                 <td>{{$producto->name}}</td>
                 <td>{{$producto->description}}</td>
                 <td>{{$producto->amount}}</td>
                 <td>
-                    <form action="">
+                    <form action="{{ route('productos-show',['id' => $producto->id]) }}">
                         @csrf
-                        <button class="btn btn-success">Editar</button>
+                        <button class="btn btn-success btn-sm">Editar</button>
                     </form>
 
                 </td>
                 <td>
-                    <form action="">
+                    <form action="{{ route('productos-destroy',['id' => $producto->id]) }}" method="POST">
+                        @method('DELETE')
                         @csrf
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn btn-danger btn-sm">Eliminar</button>
                     </form>
                 </td>
             </tr>

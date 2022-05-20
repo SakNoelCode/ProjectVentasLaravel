@@ -61,6 +61,7 @@ class productosController extends Controller
 
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -70,6 +71,8 @@ class productosController extends Controller
     public function show($id)
     {
         //
+        $producto = Producto::find($id);
+        return view('Productos.show',['producto' => $producto]);
     }
 
     /**
@@ -93,6 +96,21 @@ class productosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request -> validate([
+            'name' => 'required|max:40',
+            'description' => 'required|max:255',
+            'amount' => 'required|numeric',
+        ]);
+
+        $producto = Producto::find($id);
+
+        $producto -> name = $request -> name;
+        $producto -> description = $request -> description;
+        $producto -> amount = $request -> amount;
+
+        $producto -> save();
+
+        return redirect() -> route('productos')->with('success','Producto actualizado');
     }
 
     /**
@@ -104,5 +122,10 @@ class productosController extends Controller
     public function destroy($id)
     {
         //
+        $producto = Producto::find($id);
+        $producto -> delete();
+
+        return redirect() -> route('productos')->with('success','Producto eliminado');
     }
+
 }
