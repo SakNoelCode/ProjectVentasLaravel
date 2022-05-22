@@ -37,6 +37,19 @@
                 @enderror
             </div>
 
+            <div class="col-md-6">
+                <label for="inputCategory" class="form-label">Categoría:</label>
+                <select name="category_id" id="inputCategory" class="form-select">
+                    @foreach ($categorias as $category)
+                    <option value="{{$category->id}}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <br>
+                @error('category_id')
+                <h6 class="alert alert-danger">{{$message}}</h6>
+                @enderror
+            </div>
+
             <div class="col-12">
                 <label for="inputDescription" class="form-label">Descripción</label>
                 <input type="text" name="description" id="inputDescription" class="form-control">
@@ -60,15 +73,24 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Categoría</th>
                 <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
-        <tbody>           
+        <tbody>
             @foreach ($productos as $producto)
+
             <tr>
                 <td>{{$producto->name}}</td>
                 <td>{{$producto->description}}</td>
                 <td>{{$producto->amount}}</td>
+                <td>
+                    @foreach ($categorias as $category)
+                    @if ($producto -> categoria_id == $category ->id)
+                    {{$category->name}}
+                    @endif
+                    @endforeach
+                </td>
                 <td>
                     <form action="{{ route('productos-show',['id' => $producto->id]) }}">
                         @csrf
@@ -77,13 +99,39 @@
 
                 </td>
                 <td>
-                    <form action="{{ route('productos-destroy',['id' => $producto->id]) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                    </form>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$producto->id}}">
+                        Eliminar
+                    </button>
+
+                    <!--button type="button" class="btn btn-danger btn-sm" data-bs-toogle="modal" data-bs-target="#modal-{{$producto->id}}">Eliminar</button-->
+
                 </td>
             </tr>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal-{{$producto->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Mensaje de confirmación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Seguro que eliminar un registro?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                            <form action="{{ route('productos-destroy',['id' => $producto->id]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Confirmar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @endforeach
         </tbody>
     </table>

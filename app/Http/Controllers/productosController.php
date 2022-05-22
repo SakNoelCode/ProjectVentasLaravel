@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoria;
 use App\Models\producto;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,9 @@ class productosController extends Controller
     public function index()
     {
         $productos = producto::all();
-        return view('Productos.productos',['productos' => $productos]);
+        $categorias = categoria::all();
+
+        return view('Productos.productos',['productos' => $productos, 'categorias' => $categorias]);
     }
 
     /**
@@ -54,6 +57,7 @@ class productosController extends Controller
         $producto -> name = $request -> name;
         $producto -> description = $request -> description;
         $producto -> amount = $request -> amount;
+        $producto -> categoria_id = $request -> category_id;
 
         $producto -> save();
 
@@ -72,7 +76,8 @@ class productosController extends Controller
     {
         //
         $producto = Producto::find($id);
-        return view('Productos.show',['producto' => $producto]);
+        $categorias = categoria::all();
+        return view('Productos.show',['producto' => $producto,'categorias'=> $categorias]);
     }
 
     /**
@@ -107,6 +112,7 @@ class productosController extends Controller
         $producto -> name = $request -> name;
         $producto -> description = $request -> description;
         $producto -> amount = $request -> amount;
+        $producto -> categoria_id = $request -> category_id;
 
         $producto -> save();
 

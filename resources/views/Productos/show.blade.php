@@ -38,6 +38,26 @@
                 @enderror
             </div>
 
+            <div class="col-md-6">
+                <label for="inputCategory" class="form-label">Categoría:</label>
+                <select name="category_id" id="inputCategory" class="form-select">
+                    @foreach ($categorias as $category)
+
+                    <!---Comparar para poder seleccionar la categoría del producto--->
+                    @if ($producto -> categoria_id == $category ->id)
+                    <option selected value="{{$category->id}}">{{ $category->name }}</option>
+                    @else
+                    <option value="{{$category->id}}">{{ $category->name }}</option>
+                    @endif
+
+                    @endforeach
+                </select>
+                <br>
+                @error('category_id')
+                <h6 class="alert alert-danger">{{$message}}</h6>
+                @enderror
+            </div>
+
             <div class="col-12">
                 <label for="inputDescription" class="form-label">Descripción</label>
                 <input type="text" name="description" id="inputDescription" class="form-control" value="{{ $producto->description }}">

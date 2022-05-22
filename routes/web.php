@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\categoriasController;
 use App\Http\Controllers\clientesController;
 use App\Http\Controllers\productosController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,9 @@ Route::view('/Clientes','Clientes.clientes') -> name('clientes');
 
 /**Retornar la Vista productos cuando estemos en la ruta /Productos */
 Route::view('/Productos','Productos.productos') -> name('productos');
+
+/**Retornar la Vista Categorías cuando estemos en la ruta /Categorias */
+//Route::view('/Categorias','Categorias.categorias') -> name('categorias');
 
 
 /*------------------RETORNAR CUANDO SE EJECUTEN METODOS POST---------------*/
@@ -70,3 +74,8 @@ Route::patch('/Productos/{id}',[productosController::class,'update'])->name('pro
 
 Route::delete('/Productos/{id}',[productosController::class,'destroy'])->name('productos-destroy');
 
+
+/**Cuando añadimos un modelo como recurso se puede automaticameente añadir todas sus 
+ * rutas de la siguiente manera
+ */
+Route::resource('categorias',categoriasController::class);
