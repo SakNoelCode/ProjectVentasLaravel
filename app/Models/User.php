@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    /**Campos que van a guardarse en la tabla */
     protected $fillable = [
         'name',
         'email',
@@ -28,6 +29,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    /**Campos que serán ocultos para guardarse en la base de datos */
     protected $hidden = [
         'password',
         'remember_token',
@@ -38,7 +40,14 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    /**Campos que serán casteados */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**Encriptar Password */
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

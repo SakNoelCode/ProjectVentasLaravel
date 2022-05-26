@@ -59,7 +59,6 @@ Route::get( '/Productos',[productosController::class,"index"]) -> name('producto
 
 Route::get('/Productos/{id}',[productosController::class,'show'])->name('productos-show');
 
-
 /*------------------RETORNAR CUANDO SE EJECUTEN OTROS METODOS PATCH O PUT, ETC---------------*/
 /*PATCH se usa para actualizar datos parciales (algunos campos) 
  * PUT se usa para actualizar todos los datos (todos los campos).

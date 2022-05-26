@@ -1,5 +1,5 @@
 @extends('layout')
-
+@section('title','Actualizar-Producto')
 @section('content')
 <br>
 <br>

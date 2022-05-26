@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title','Productos')
+
 @section('content')
 <br>
 <br>

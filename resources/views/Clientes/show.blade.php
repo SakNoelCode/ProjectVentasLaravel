@@ -1,6 +1,6 @@
 <!---Directiva que te permite importar una vista--->
 @extends('layout')
-
+@section('title','Actualizar-cliente')
 <!---Directiva que te permite crear una sección con su respectivo nombre--->
 @section('content')
 

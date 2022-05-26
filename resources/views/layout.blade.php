@@ -9,13 +9,12 @@
   <!----Importación para BootStrap CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <title>Sistemas de Ventas MINERSA</title>
+  <title>@yield('title')</title>
 </head>
 
 <body>
 
-  <!---Notas
-| {{route('clientes')}} -> Nos permite dirigirnos a la ruta con ese nombre
+  <!---Notas--{{route('clientes')}} -> Nos permite dirigirnos a la ruta con ese nombre
 --->
 
   <!--Nav Va Bootstrap--->
@@ -37,7 +36,6 @@
             <a class="nav-link" href="#">Ventas</a>
           </li>
           <li class="nav-item">
-            <!---{{route('clientes')}} -> Nos permite dirigirnos a la ruta con ese nombre --->
             <a class="nav-link" href="{{route('clientes')}}">Clientes</a>
           </li>
           <li class="nav-item">

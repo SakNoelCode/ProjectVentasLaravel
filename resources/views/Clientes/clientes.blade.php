@@ -1,6 +1,6 @@
 <!---Directiva que te permite importar una vista--->
 @extends('layout')
-
+@section('title','Clientes')
 <!---Directiva que te permite crear una sección con su respectivo nombre--->
 @section('content')
 
@@ -12,7 +12,7 @@
     <h1 class="text-center">Clientes</h1>
 </div>
 
-<div class="container w-50 border border-primary rounded p-4 mt-3">
+<div class="container w-100 border border-primary rounded p-4 mt-3">
 
     <!---Formulario Cliente--->
 
@@ -77,64 +77,65 @@
 
 
     <!---TABLA QUE MOSTRARA LOS REGISTROS DE CLIENTE--->
-    <h2 class="mt-4 mb-3 text-center">Tabla de Registro:</h2>
-    <div>
-        <!---Encabezado de la tabla--->
-        <div class="row">
-            <div class="col-md-2 d-flex align-items-center">
-                <p><b>Nombres</b></p>
-            </div>
-            <div class="col-md-2 d-flex align-items-center">
-                <p><b>Apellidos</b></p>
-            </div>
-            <div class="col-md-2 d-flex align-items-center">
-                <p> <b>DNI</b></p>
-            </div>
-            <div class="col-md-3 d-flex align-items-center">
-                <p><b>Dirección</b></p>
-            </div>
-            <div class="col-md-3 d-flex justify-content-end">
-                <p><b>Opciones</b></p>
-            </div>
-        </div>
+    <h2 class="mt-4 mb-4 text-center">Tabla de Clientes</h2>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Dirección</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($clientes as $cliente)
+            <tr>
+                <td>{{$cliente->Name}}</td>
+                <td>{{$cliente->Surname}}</td>
+                <td>{{$cliente->DNI}}</td>
+                <td>{{$cliente->Address}}</td>
+                <td>
 
-        <!---Recorrer cada elemento de la variable Clientes con  un Foreach--->
-        @foreach ($clientes as $cliente)
-        <div class="row py-1">
-            <!---Primer campo de la tabla, se debe llamar a los datos según están en la base de datos--->
-            <div class="col-md-2 d-flex align-items-center">
-                <a href="{{ route('clientes-show' , ['id' => $cliente->id] ) }}"> {{ $cliente->Name }} </a>
-            </div>
+                    <form action="{{ route('clientes-show' , ['id' => $cliente->id] ) }}">
+                        @csrf
+                        <button class="btn btn-success btn-sm">Editar</button>
+                    </form>
+                </td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$cliente->id}}">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
 
-            <!---Segundo campo de la tabla, se debe llamar a los datos según están en la base de datos--->
-            <div class="col-md-2 d-flex align-items-center">
-                <p>{{$cliente->Surname}}</p>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal-{{$cliente->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Mensaje de confirmación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Seguro que eliminar un registro?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                            <form action="{{ route('clientes-destroy', [$cliente->id]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Confirmar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!---Tercer campo de la tabla, se debe llamar a los datos según están en la base de datos--->
-            <div class="col-md-2 d-flex align-items-center">
-                <p>{{$cliente->DNI}}</p>
-            </div>
-
-            <!---Cuarto campo de la tabla, se debe llamar a los datos según están en la base de datos--->
-            <div class="col-md-3 d-flex align-items-center">
-                <p>{{$cliente->Address}}</p>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-end">
-                <!---último campo de la tabla, se mostará un boton donde se podrá eliminar el registro--->
-                <form action="{{ route('clientes-destroy', [$cliente->id]) }}" method="POST">
-                    <!--Especificamos que nuestro método es de tipo DELETE-->
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger btn-sm">Eliminar</button>
-                </form>
-            </div>
-        </div>
-        @endforeach
-    </div>
+            @endforeach
+        </tbody>
+    </table>
 
 </div>
-
 
 @endsection

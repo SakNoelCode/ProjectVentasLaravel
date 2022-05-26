@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\producto;
 
-/**Modelo creado con el comando php artisan make:model clientes -m 
+/**Modelo creado con el comando php artisan make:model categoria -m 
  *También creamos su respectiva migración gracias al -m
 */
 
