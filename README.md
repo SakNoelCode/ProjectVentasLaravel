@@ -54,7 +54,9 @@ php artisan migrate
 php artisan serve
 ```
 
-# Notas
+
+
+## Notas
 ## Editor.md
 Readme Hecho en [Pandao](https://pandao.github.io/editor.md/en.html "Pandao")
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
@@ -62,3 +64,8 @@ Readme Hecho en [Pandao](https://pandao.github.io/editor.md/en.html "Pandao")
 
 # Que Onda Bitch
 ## Aca jodiendo un rato
+
+
+
+## HAHAHAHHAHAH
+### XDXDXDXDXDDXXD
