@@ -2,7 +2,7 @@
 
 # Proyecto Gestión Ventas Minersa S.R.L
 
-##Dependencias
+## Dependencias
 - Se debe tener instalado [XAMPP](https://www.apachefriends.org/es/download.html "XAMPP")
 - Se debe tener instalado [Composer](https://getcomposer.org/download/ "Composer")
 
@@ -57,9 +57,9 @@ php artisan serve
 
 
 ## Notas
-## Editor.md
+### Editor.md
 Readme Hecho en [Pandao](https://pandao.github.io/editor.md/en.html "Pandao")
-![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
-
+### Php Versión
+El proyecto trabaja con la versión **8.0.2** de PHP
 
 

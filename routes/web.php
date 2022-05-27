@@ -3,6 +3,7 @@
 use App\Http\Controllers\categoriasController;
 use App\Http\Controllers\clientesController;
 use App\Http\Controllers\productosController;
+use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,3 +79,18 @@ Route::delete('/Productos/{id}',[productosController::class,'destroy'])->name('p
  * rutas de la siguiente manera
  */
 Route::resource('categorias',categoriasController::class);
+
+/**Ruta para mostrar la vista de register */
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+/**Ruta para el método post de register */
+Route::post('/register', [registerController::class, 'register'])->name('register');
+
+
+/**Ruta para nuestro Login 
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+*/
