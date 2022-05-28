@@ -1,16 +1,12 @@
-@extends('layout')
+@extends('index')
 
 @section('title','Productos')
+@section('h1_title','Registro de Productos')
 
 @section('content')
-<br>
-<br>
-<!---Encabezado--->
-<div class="container">
-    <h1 class="text-center">Productos</h1>
-</div>
+
 <!---Formulario de Registro--->
-<div class="container w-50 border border-primary rounded p-4 mt-3">
+<div class="container w-100 border border-primary rounded p-4 mt-3">
     <form action="{{ route('productos') }}" method="POST">
         @csrf
 
@@ -141,3 +137,9 @@
 </div>
 
 @endsection
+
+@section('footer')
+    
+@endsection
+
+@section('scripts')

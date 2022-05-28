@@ -20,12 +20,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*------------------RETORNAR VISTAS--------------------*/
-/*Retornar la vista Welcome cuando Estemos en la ruta /Bienvenida   DEFAULT*/ 
-Route::view('/Bienvenida','welcome') -> name('welcome');
+/*Retornar La vista index cuando accedamos a la ruta raíz */
+Route::view('/', 'Panel.panel') -> name('panel');
 
-/*Retornar La vista app cuando accedamos a la ruta raíz */
-Route::view('/', 'layout') -> name('home');
+
+/*Retornar la vista Panel.panel cuando Estemos en la ruta /Panel (Inactivos) */ 
 Route::view('/index', 'index') -> name('index');
+Route::view('/home', 'layout') -> name('home');
 
 /* Retornar la vista clientes cuando estemos en la ruta /Clientes*/
 Route::view('/Clientes','Clientes.clientes') -> name('clientes');

@@ -1,15 +1,8 @@
-@extends('layout')
+@extends('index')
 @section('title','Categorias')
+@section('h1_title','Registro de Categorias')
 @section('content')
-
-<br>
-<br>
-
-<div class="container">
-    <h1 class="text-center">Categorias</h1>
-</div>
-
-<div class="container w-50 border border-primary rounded p-4 mt-3">
+<div class="container w-100 border border-primary rounded p-4 mt-3">
 
     <form action="{{route('categorias.store')}}" method="POST">
         <!---Esta directiva nos permite activar un token de seguridad, su uso es obligatorio en formularios--->
@@ -67,3 +60,9 @@
     </table>
 </div>
 @endsection
+
+@section('footer')
+    
+@endsection
+
+@section('scripts')

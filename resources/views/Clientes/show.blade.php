@@ -1,18 +1,11 @@
 <!---Directiva que te permite importar una vista--->
-@extends('layout')
+@extends('index')
 @section('title','Actualizar-cliente')
+@section('h1_title','Actualizar Cliente')
 <!---Directiva que te permite crear una sección con su respectivo nombre--->
 @section('content')
 
-
-<br>
-<br>
-
-<div class="container">
-    <h1 class="text-center">Actualizar Clientes</h1>
-</div>
-
-<div class="container w-50 border border-primary p-4 mt-3">
+<div class="container w-100 border border-primary p-4 mt-3">
 
     <!---Formulario Cliente--->
 
@@ -75,5 +68,11 @@
 
 </div>
 
+@endsection
+
+
+@section('footer')
 
 @endsection
+
+@section('scripts')

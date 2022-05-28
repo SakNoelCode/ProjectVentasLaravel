@@ -1,14 +1,10 @@
-@extends('layout')
+@extends('index')
 @section('title','Actualizar-Producto')
+@section('h1_title','Actualizar Producto')
 @section('content')
-<br>
-<br>
-<!---Encabezado--->
-<div class="container">
-    <h1 class="text-center">Actualizar Productos</h1>
-</div>
+
 <!---Formulario de Registro--->
-<div class="container w-50 border border-primary rounded p-4 mt-3">
+<div class="container w-100 border border-primary rounded p-4 mt-3">
     <form action="{{ route('productos-update',['id' => $producto->id]) }}" method="POST">
         @method('PATCH')
         @csrf
@@ -74,3 +70,8 @@
     </form>
 </div>
 @endsection
+@section('footer')
+    
+@endsection
+
+@section('scripts')

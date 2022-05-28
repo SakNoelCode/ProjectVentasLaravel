@@ -1,14 +1,8 @@
-@extends('layout')
+@extends('index')
 @section('title','Actualizar-categoria')
+@section('h1_title','Actualizar-categoria')
 @section('content')
-<br>
-<br>
-
-<div class="container">
-    <h1 class="text-center">Actualizar categoria</h1>
-</div>
-
-<div class="container w-50 border border-primary rounded p-4 mt-3">
+<div class="container w-100 border border-primary rounded p-4 mt-3">
 
     <form action="{{route('categorias.update',['categoria'=>$categoria->id])}}" method="POST">
         @method('PATCH')
@@ -43,3 +37,9 @@
     </form>
 </div>
 @endsection
+
+@section('footer')
+    
+@endsection
+
+@section('scripts')

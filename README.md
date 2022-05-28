@@ -3,7 +3,7 @@
 # Proyecto Gestión Ventas Minersa S.R.L
 
 ## Dependencias
-- Se debe tener instalado [XAMPP](https://www.apachefriends.org/es/download.html "XAMPP")
+- Se debe tener instalado [XAMPP](https://www.apachefriends.org/es/download.html "XAMPP") (versión **PHP** **8.0.2** o superior)  
 - Se debe tener instalado [Composer](https://getcomposer.org/download/ "Composer")
 
 ## Como instalar
@@ -38,7 +38,7 @@ DB_DATABASE=dbsistema_ventas
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-- Este comando nos generará una nueva key, lo agregará el archivo** .env** automáticamente
+- Este comando nos generará una nueva key, lo agregará el archivo **.env** automáticamente
 ```bash
 php artisan key:generate 
 ```
@@ -54,12 +54,18 @@ php artisan migrate
 php artisan serve
 ```
 
-
-
 ## Notas
 ### Editor.md
 Readme Hecho en [Pandao](https://pandao.github.io/editor.md/en.html "Pandao")
 ### Php Versión
 El proyecto trabaja con la versión **8.0.2** de PHP
 
+## Colaboradores
+- [Arcangel_RS](https://github.com/SakNoelCode)
+- [Kalifo](https://github.com/jkCesarTec)
+- [Plantef](https://github.com/WOLFPLAN2000)
+- [Uriol_Md](https://github.com/Richard1509)
+- [Yover_VN](https://github.com/Cristianyover-VN)
 
+## Capturas
+![Img](https://github.com/SakNoelCode/Imagenes_Proyectos/blob/master/Captura%20de%20pantalla%20(226).png)
