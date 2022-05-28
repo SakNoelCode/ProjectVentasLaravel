@@ -25,6 +25,7 @@ Route::view('/Bienvenida','welcome') -> name('welcome');
 
 /*Retornar La vista app cuando accedamos a la ruta raíz */
 Route::view('/', 'layout') -> name('home');
+Route::view('/index', 'index') -> name('index');
 
 /* Retornar la vista clientes cuando estemos en la ruta /Clientes*/
 Route::view('/Clientes','Clientes.clientes') -> name('clientes');
