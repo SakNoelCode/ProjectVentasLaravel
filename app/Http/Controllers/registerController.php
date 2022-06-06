@@ -15,7 +15,10 @@ class registerController extends Controller
         return view('auth.register');
     }
 
+    /**Función que se comunica con la clase registerRequest de tipo Request*/
+    /**Crear un nuevo usuario */
     public function register(registerRequest $request){
-        $user = User::create($request->validated());  
+        $user = User::create($request->validated());  //Crear un nuevo usuario
+        return redirect()-> route('register-show')->with('success','Usuario creado correctamente'); 
     }
 }

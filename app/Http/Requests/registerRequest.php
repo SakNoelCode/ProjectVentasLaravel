@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/*Request creado a través del comando php artisan make:request registerController*/
+/*Request creado a través del comando php artisan make:request registerRequest*/
 
 class registerRequest extends FormRequest
 {

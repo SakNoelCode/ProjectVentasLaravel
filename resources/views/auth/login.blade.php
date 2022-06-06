@@ -11,32 +11,29 @@
 
   <title>Inicio de sesión</title>
 </head>
+
 <body>
-<br>
-<br>
-<div class="container mt-5">
+  <br>
+  <br>
+  <div class="container mt-5">
     <h1 class="text-center">Iniciar Sesión</h1>
-</div>
+  </div>
 
 
-<div class="container container w-25 border border-primary rounded p-4 mt-4">
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Nombre de Usuario</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-</div>
+  <div class="container container w-25 border border-primary rounded p-4 mt-4">
+    <form action="{{route('login')}}" method="POST">
+      @csrf
+      <div class="mb-3">
+        <label for="exampleInputName" class="form-label">Nombre de Usuario</label>
+        <input type="text" name="name" class="form-control" id="exampleInputName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+  </div>
 
   <br>
   <br>
@@ -44,5 +41,5 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
-</html>
 
+</html>
