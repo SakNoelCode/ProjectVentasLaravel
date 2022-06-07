@@ -41,7 +41,7 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+          <li><a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>
         </ul>
       </li>
     </ul>
@@ -140,7 +140,8 @@
 
         <div class="sb-sidenav-footer">
           <div class="small">Sesión iniciada como:</div>
-          Arcangel RS
+          <!-----Nombre de usuario-->
+          <span>{{ Auth()->user()->name }}</span>
         </div>
       </nav>
     </div>

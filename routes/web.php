@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\categoriasController;
 use App\Http\Controllers\clientesController;
+use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\logoutController;
 use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +24,12 @@ use Illuminate\Support\Facades\Route;
 
 /*------------------RETORNAR VISTAS--------------------*/
 /*Retornar La vista index cuando accedamos a la ruta raíz */
-Route::view('/', 'Panel.panel') -> name('panel');
+Route::get('/',[homeController::class,'index'])->name('panel');
 
 
 /*Retornar la vista Panel.panel cuando Estemos en la ruta /Panel (Inactivos) */ 
-Route::view('/index', 'index') -> name('index');
-Route::view('/home', 'layout') -> name('home');
+//Route::view('/index', 'index') -> name('index');
+//Route::view('/home', 'layout') -> name('home');
 
 /* Retornar la vista clientes cuando estemos en la ruta /Clientes*/
 Route::view('/Clientes','Clientes.clientes') -> name('clientes');
@@ -95,4 +97,7 @@ Route::get('/login', [loginController::class,'show'])->name('login-show');
 
 /**Ruta para el método post de login */
 Route::post('/login', [loginController::class,'login'])->name('login');
+
+/**Ruta para el método logout */
+Route::get('/logout', [logoutController::class,'logout'])->name('logout');
 

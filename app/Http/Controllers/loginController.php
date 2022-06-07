@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\loginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+/*Controlador creado a través del comando php artisan make:controller loginController*/
 
 class loginController extends Controller
 {
@@ -24,7 +25,7 @@ class loginController extends Controller
 
         /**Validar credenciales a través del método Auth*/
         if(!Auth::validate($credentials)){//Si el usuario no es valido
-            return redirect()->to('/login')->withErrors('auth.failed');
+            return redirect()->to('/login')->withErrors('Credenciales incorrectas');
         }
 
         /**Si el usuario es valido, entonces se logea*/
@@ -34,7 +35,7 @@ class loginController extends Controller
         return $this->authenticated($request, $user);
     }
 
-    //ruta para el logout
+    //ruta para el login
     public function authenticated(Request $request, $user){
         return redirect()->route('panel');
     }
