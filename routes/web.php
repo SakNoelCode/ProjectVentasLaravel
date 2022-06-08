@@ -89,6 +89,9 @@ Route::resource('categorias',categoriasController::class);
 /**Ruta para mostrar la vista de register */
 Route::get('/register', [registerController::class, 'show'])->name('register-show');
 
+/**Ruta para la vista de registrar un nuevo usuario */
+Route::get('/register-new', [registerController::class, 'show_new'])->name('register-new');
+
 /**Ruta para el método post de register */
 Route::post('/register', [registerController::class, 'register'])->name('register');
 

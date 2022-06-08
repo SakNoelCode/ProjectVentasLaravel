@@ -15,6 +15,10 @@ class registerController extends Controller
         return view('auth.register');
     }
 
+    public function show_new(){
+        return view('auth.registerNew');
+    }
+
     /**Función que se comunica con la clase registerRequest de tipo Request*/
     /**Crear un nuevo usuario */
     public function register(registerRequest $request){

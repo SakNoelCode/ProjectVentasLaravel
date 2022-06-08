@@ -9,13 +9,13 @@ class homeController extends Controller
 {
     //
     public function index()
-    {
-        //Enviar el valor de la variable de sesión
+    {  
+        //Si el usuario está autenticado, retornar la vista panel     
         if (Auth::check()) {
             //$username = Auth()->user()->name;
             return view('Panel.panel');
         }
         //Si no hay sesión activa
-        return view('auth.login');
+        return view('auth.login');       
     }
 }

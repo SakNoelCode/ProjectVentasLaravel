@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Str;
 
+/**Archivo de configuración de nuestra base de datos */
+/**Toma los valores del archivo .env */
+
 return [
 
     /*

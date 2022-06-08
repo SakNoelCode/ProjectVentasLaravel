@@ -20,10 +20,15 @@ return new class extends Migration
         Schema::table('productos', function (Blueprint $table) {
             //
             //Se crea un nuevo campo en la tabla productos, con el nombre de categoria_id
-            $table -> unsignedBigInteger('categoria_id');
+            //$table -> unsignedBigInteger('categoria_id');
             //al campo creado se le hace trabajar como llave foranea, y hará referencia de la 
             //tabla categorias en el campo id, será colocada después del campo amount
-            $table -> foreign('categoria_id')->references('id')->on('categorias')->after('amount');
+            $table -> foreign('categoria_id')->references('id')->on('categorias');
+
+            //$table->unsignedBigInteger('unidadMedida_id');
+            //$table->foreign('unidadMedida_id')->references('id')->on('unidades_medidas')->after('stock');
+            //$table->unsignedBigInteger('presentacion_id');
+            //$table->foreign('presentacion_id')->references('id')->on('presentaciones')->after('unidadMedida_id');
         });
     }
 
@@ -35,7 +40,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('productos', function (Blueprint $table) {
-            //
+            $table -> dropForeign(['categoria_id']);
         });
     }
 };

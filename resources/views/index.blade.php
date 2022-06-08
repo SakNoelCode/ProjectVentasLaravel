@@ -17,7 +17,7 @@
 
 <body class="sb-nav-fixed">
   <!---//Si está autenticado---->
-  @auth 
+  @auth
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="{{route('panel')}}">Minersa S.R.L</a>
@@ -195,11 +195,10 @@
 
   @endauth
 
-  <!---Si no esta autenticado---->
+  <!---Si no esta autenticado--->
   @guest
-  <h4>Accede al contenido <a href="{{ route('login-show') }}">Iniciando Sesión</a></h4>
+  <h4 class="text-center m-4">Accede al contenido <a href="{{ route('login-show') }}">Iniciando Sesión</a></h4>
   @endguest
-  
 </body>
 
 </html>

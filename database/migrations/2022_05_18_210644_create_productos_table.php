@@ -21,9 +21,17 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
 
+            $table->string('cod_producto',255)->nullable();
             $table->string('name');
             $table->text('description');
             $table->decimal('amount',$precision=8, $escale=2);
+            $table->date('fecha_vencimiento')->nullable();    
+            $table->integer('stock')->nullable();
+
+            //Laves foraneas
+            $table -> unsignedBigInteger('categoria_id');
+            $table -> unsignedBigInteger('unidadMedida_id');
+            $table -> unsignedBigInteger('presentacion_id');
 
             $table->timestamps();
         });
