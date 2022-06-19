@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * Ejecutar el comando php artisan migrate:fresh --seed
+ * para crear un usuario de prueba
  */
 class UserFactory extends Factory
 {

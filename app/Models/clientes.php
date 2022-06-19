@@ -12,3 +12,5 @@ class clientes extends Model
 {
     use HasFactory;
 }
+
+

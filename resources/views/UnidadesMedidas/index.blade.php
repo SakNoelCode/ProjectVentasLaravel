@@ -1,31 +1,28 @@
 @extends('index')
-@section('title','Categorias')
-@section('h1_title','Registro de Categorias')
+@section('title','Unidades-Medida')
+@section('h1_title','Unidades de Medida')
 @section('content')
+
+
 <div class="container w-100 border border-primary rounded p-4 mt-3">
-
-    <form action="{{route('categorias.store')}}" method="POST">
-        <!---Esta directiva nos permite activar un token de seguridad, su uso es obligatorio en formularios--->
+    <form action="{{route('unidadesMedidas.store')}}" method="POST">
         @csrf
-
-        <!--Esta directiva nos comprobar si el envío del formulario ha sido exitoso-->
         @if (session('success'))
         <div class="col-12">
-            <h5 class="alert alert-success"> {{session('success')}} </h5>
+            <h5 class="alert alert-success">{{session('success')}}</h5>
         </div>
         @endif
 
         <div class="row g-3">
             <div class="col-md-9">
-                <label for="inputNames" class="form-label">Nombre:</label>
-                <input type="text" name="categoria" class="form-control" id="inputNames">
-                <!---Directiva que detecta inconistencias en la entrada del dato 
-                 las condiciones se encuentran en el controlador--->
+                <label for="inputMedida" class="form-label">Nombre:</label>
+                <input type="text" name="unidadMedida" class="form-control" id="inputMedida">
                 <br>
-                @error('categoria')
-                <h6 class="alert alert-danger"> {{ $message }} </h6>
+                @error('unidadMedida')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
                 @enderror
             </div>
+
             <div class="col-md-12">
                 <label for="inputDescription" class="form-label">Descripción:</label>
                 <textarea name="description" maxlength="80" class="form-control" id="inputDescription" rows="3"></textarea>
@@ -34,6 +31,7 @@
                 <h6 class="alert alert-danger">{{ $message }}</h6>
                 @enderror
             </div>
+
             <div class="col-md-6">
                 <div class="form-check form-switch">
                     <input name="cboEstado" class="form-check-input" type="checkbox" id="EstadoCheckChecked" checked>
@@ -42,15 +40,17 @@
                 <br>
             </div>
 
-            <!---Botón Submit Guardar --->
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
+
         </div>
+
     </form>
 
-    <!---Tabla Categorías--->
-    <h2 class="mt-4 mb-4 text-center">Tabla de Categorías</h2>
+
+    <!---Tabla Unidades-Medidas--->
+    <h2 class="mt-4 mb-4 text-center">Tabla de Unidades de Medida</h2>
     <table class="table table-bordered border-primary">
         <thead>
             <tr class="table-primary">
@@ -59,12 +59,11 @@
             </tr>
         </thead>
         <tbody>
-            <!--Se asigna esta variable en el ProductoController--->
-            @foreach ($categorias as $categoria)
+            @foreach ($unidadesMedidas as $unidadMedida)
             <tr>
-                <td class="text-center">{{$categoria->categoria}}</td>
+                <td class="text-center">{{$unidadMedida->unidadMedida}}</td>
                 <td class="text-center">
-                    <form action="{{ route ('categorias.show',['categoria' => $categoria->id] ) }}">
+                    <form action="{{ route ('unidadesMedidas.show',['unidadesMedida' => $unidadMedida->id] ) }}" >
                         @csrf
                         <button class="btn btn-primary" type="submit">Editar</button>
                     </form>

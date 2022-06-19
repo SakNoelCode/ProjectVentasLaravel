@@ -16,7 +16,7 @@ class categoriasController extends Controller
     {
         //
         $categorias = categoria::all();
-        return view('Categorias.index',['categorias'=>$categorias]);
+        return view('Categorias.index', ['categorias' => $categorias]);
     }
 
     /**
@@ -38,15 +38,23 @@ class categoriasController extends Controller
     public function store(Request $request)
     {
         //
-        $request -> validate([
-            'name' => 'required|max:255|unique:categorias'
+        $request->validate([
+            'categoria' => 'required|max:255|unique:categorias',
+            'description' => 'max:255'
         ]);
 
         $categoria = new categoria();
-        $categoria -> name = $request -> name;
+        $categoria->categoria = $request->categoria;
+        $categoria->descripcion = $request->description;
+        if (isset($request->cboEstado)) {
+            $categoria->estado = 'ACTIVO';
+        } else {
+            $categoria->estado = 'INACTIVO';
+        }
+        //dd($categoria);
         $categoria->save();
 
-        return redirect()->route('categorias.index')->with('success','Categorías añadida');
+        return redirect()->route('categorias.index')->with('success', 'Categoría añadida');
     }
 
     /**
@@ -59,7 +67,8 @@ class categoriasController extends Controller
     {
         //
         $categoria = categoria::find($id);
-        return view('Categorias.show',['categoria'=>$categoria]);
+        //dd($categoria);
+        return view('Categorias.show', ['categoria' => $categoria]);
     }
 
     /**
@@ -83,15 +92,22 @@ class categoriasController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request -> validate([
-            'name' => 'required|max:255|unique:categorias'
+        $request->validate([
+            'categoria' => 'required|max:255',
+            'description' => 'max:255'
         ]);
 
         $categoria = categoria::find($id);
-        $categoria -> name = $request -> name;
+        $categoria->categoria = $request->categoria;
+        $categoria->descripcion = $request->description;
+        if (isset($request->cboEstado)) {
+            $categoria->estado = 'ACTIVO';
+        } else {
+            $categoria->estado = 'INACTIVO';
+        }
         $categoria->save();
 
-        return redirect()->route('categorias.index')->with('success','Categorías actualizada');
+        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada');
     }
 
     /**
@@ -103,6 +119,6 @@ class categoriasController extends Controller
     public function destroy($id)
     {
         //No se podrá eliminar las categorías       
-        
+
     }
 }

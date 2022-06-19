@@ -100,6 +100,19 @@
               </nav>
             </div>
 
+            <!-----Bloque Unidades Medidas-->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsUnidadesMedida" aria-expanded="false" aria-controls="collapseLayoutsUnidadesMedida">
+              <div class="sb-nav-link-icon"><i class="fa-solid fa-box-open"></i></div>
+              U. de Medida
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayoutsUnidadesMedida" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="{{route('unidadesMedidas.index')}}">Nuevo registro</a>
+                <a class="nav-link" href="#">Buscar</a>
+              </nav>
+            </div>
+
 
             <!-----Bloque Usuarios-->
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
