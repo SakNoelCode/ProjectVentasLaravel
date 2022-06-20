@@ -76,7 +76,7 @@
 
             <!-----Bloque Productos-->
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsProduct" aria-expanded="false" aria-controls="collapseLayoutsProduct">
-              <div class="sb-nav-link-icon"><i class="fa-solid fa-box-open"></i></div>
+              <div class="sb-nav-link-icon"><i class="fa-solid fa-dolly"></i></div>
               Productos
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -110,6 +110,19 @@
               <nav class="sb-sidenav-menu-nested nav">
                 <a class="nav-link" href="{{route('unidadesMedidas.index')}}">Nuevo registro</a>
                 <a class="nav-link" href="#">Buscar</a>
+              </nav>
+            </div>
+
+            <!-----Bloque Presentaciones-->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsPresentacion" aria-expanded="false" aria-controls="collapseLayoutsPresentacion">
+              <div class="sb-nav-link-icon"><i class="fa-solid fa-box"></i></div>
+              Presentaciones
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayoutsPresentacion" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="{{route('presentaciones.index')}}">Nuevo registro</a>
+                <a class="nav-link" href="{{route('presentaciones-search')}}">Buscar</a>
               </nav>
             </div>
 

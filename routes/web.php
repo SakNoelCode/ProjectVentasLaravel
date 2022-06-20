@@ -8,6 +8,7 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\unidadesMedidasController;
+use App\Http\Controllers\presentacionesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +67,8 @@ Route::get( '/Productos',[productosController::class,"index"]) -> name('producto
 
 Route::get('/Productos/{id}',[productosController::class,'show'])->name('productos-show');
 
+Route::get('presentaciones/search',[PresentacionesController::class,'search'])->name('presentaciones-search');
+
 /*------------------RETORNAR CUANDO SE EJECUTEN OTROS METODOS PATCH O PUT, ETC---------------*/
 /*PATCH se usa para actualizar datos parciales (algunos campos) 
  * PUT se usa para actualizar todos los datos (todos los campos).
@@ -81,11 +84,13 @@ Route::patch('/Productos/{id}',[productosController::class,'update'])->name('pro
 Route::delete('/Productos/{id}',[productosController::class,'destroy'])->name('productos-destroy');
 
 
+
 /**Cuando añadimos un modelo como recurso se puede automaticameente añadir todas sus 
  * rutas de la siguiente manera
  */
 Route::resource('categorias',categoriasController::class);
 Route::resource('unidadesMedidas',unidadesMedidasController::class);
+Route::resource('presentaciones',presentacionesController::class);
 
 /**Ruta para mostrar la vista de register */
 Route::get('/register', [registerController::class, 'show'])->name('register-show');
