@@ -26,7 +26,7 @@ class categoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('Categorias.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class categoriasController extends Controller
         //dd($categoria);
         $categoria->save();
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría añadida');
+        return redirect()->route('categorias.create')->with('success', 'Registro exitoso');
     }
 
     /**
@@ -107,7 +107,7 @@ class categoriasController extends Controller
         }
         $categoria->save();
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada');
+        return redirect()->route('categorias.index')->with('success', 'Registro actualizado');
     }
 
     /**

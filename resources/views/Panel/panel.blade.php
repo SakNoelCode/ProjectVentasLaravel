@@ -2,6 +2,11 @@
 
 @section('title','Panel')
 
+@section('styles')
+ <!---DataTables CSS--->
+ <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+@endsection
+
 @section('h1_title','Panel de Control')
 
 @section('content')

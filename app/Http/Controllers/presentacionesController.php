@@ -19,8 +19,8 @@ class presentacionesController extends Controller
      */
     public function index()
     {
-        //
         $presentaciones = presentaciones::all();
+        //$presentaciones = presentaciones::orderBy('id','asc')->paginate();
         return view('Presentaciones.index',['presentaciones' => $presentaciones]);
     }
 
@@ -32,6 +32,7 @@ class presentacionesController extends Controller
     public function create()
     {
         //
+        return view('Presentaciones.create');
     }
 
     /**
@@ -58,7 +59,7 @@ class presentacionesController extends Controller
         }
         
         $presentacion->save();
-        return redirect()->route('presentaciones.index')->with('success','Registro exitoso');
+        return redirect()->route('presentaciones.create')->with('success','Registro exitoso');
     }
 
     /**
@@ -82,7 +83,9 @@ class presentacionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        /*
+        $presentacion = presentaciones::find($id);
+        return view('Presentaciones.edit',['presentacion' => $presentacion]);*/
     }
 
     /**
@@ -97,7 +100,7 @@ class presentacionesController extends Controller
         //
         $request->validate([
             'presentacion' => 'required|max:255',
-            'description' => 'max:255'
+            'description' => 'max:255',
         ]);
 
         $presentacion =  presentaciones::find($id);
@@ -110,7 +113,8 @@ class presentacionesController extends Controller
         }
 
         $presentacion->save();
-        return redirect()->route('presentaciones.index')->with('success','Actualización exitosa');
+        
+        return redirect()->route('presentaciones.index')->with('success','Registro actualizado');
     }
 
     /**

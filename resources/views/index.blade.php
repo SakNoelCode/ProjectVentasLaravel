@@ -8,11 +8,12 @@
   <meta name="description" content="Sitio web de la página Minersa S.R.L" />
   <meta name="author" content="Arcangel" />
   <title>@yield('title','Inicio')</title>
-  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-  <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+  <!-- Font Awesome Icons -->"
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <!----Importación para BootStrap CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  @yield('styles')
+  <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
 </head>
 
 <body class="sb-nav-fixed">
@@ -69,8 +70,8 @@
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{route('clientes')}}">Registro de Clientes</a>
-                <a class="nav-link" href="#">Buscar Cliente</a>
+                <a class="nav-link" href="{{route('clientes')}}">Nuevo registro</a>
+                <a class="nav-link" href="#">Buscar</a>
               </nav>
             </div>
 
@@ -82,8 +83,8 @@
             </a>
             <div class="collapse" id="collapseLayoutsProduct" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{route('productos')}}">Registro de Productos</a>
-                <a class="nav-link" href="#">Buscar Producto</a>
+                <a class="nav-link" href="{{route('productos')}}">Nuevo registro</a>
+                <a class="nav-link" href="#">Buscar</a>
               </nav>
             </div>
 
@@ -95,8 +96,8 @@
             </a>
             <div class="collapse" id="collapseLayoutsCategory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{route('categorias.index')}}">Registro de Categorías</a>
-                <a class="nav-link" href="#">Buscar Categoría</a>
+                <a class="nav-link" href="{{route('categorias.index')}}">Nuevo registro</a>
+                <a class="nav-link" href="#">Buscar</a>
               </nav>
             </div>
 
@@ -177,9 +178,9 @@
       <main>
         <div class="container-fluid px-4">
           <h1 class="mt-4 text-center">@yield('h1_title','Inicio')</h1>
-          <ol class="breadcrumb mb-4">
+          <!--ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active text-center"></li>
-          </ol>
+          </ol-->
 
           @yield('content')
 
@@ -212,8 +213,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
-
-  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script--->
   <!--JS MAIN-->
   <script src="{{ asset('js/index.js') }}" type="text/javascript"></script>
   

@@ -1,83 +1,140 @@
 @extends('index')
 @section('title','Categorias')
-@section('h1_title','Registro de Categorias')
+@section('styles')
+<!---DataTables CSS--->
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<!---Librería Mensajes emergentes--->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endsection
+@section('h1_title','Categorías')
 @section('content')
-<div class="container w-100 border border-primary rounded p-4 mt-3">
 
-    <form action="{{route('categorias.store')}}" method="POST">
-        <!---Esta directiva nos permite activar un token de seguridad, su uso es obligatorio en formularios--->
-        @csrf
-
-        <!--Esta directiva nos comprobar si el envío del formulario ha sido exitoso-->
-        @if (session('success'))
-        <div class="col-12">
-            <h5 class="alert alert-success"> {{session('success')}} </h5>
-        </div>
-        @endif
-
-        <div class="row g-3">
-            <div class="col-md-9">
-                <label for="inputNames" class="form-label">Nombre:</label>
-                <input type="text" name="categoria" class="form-control" id="inputNames">
-                <!---Directiva que detecta inconistencias en la entrada del dato 
-                 las condiciones se encuentran en el controlador--->
-                <br>
-                @error('categoria')
-                <h6 class="alert alert-danger"> {{ $message }} </h6>
-                @enderror
-            </div>
-            <div class="col-md-12">
-                <label for="inputDescription" class="form-label">Descripción:</label>
-                <textarea name="description" maxlength="80" class="form-control" id="inputDescription" rows="3"></textarea>
-                <br>
-                @error('description')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-                @enderror
-            </div>
-            <div class="col-md-6">
-                <div class="form-check form-switch">
-                    <input name="cboEstado" class="form-check-input" type="checkbox" id="EstadoCheckChecked" checked>
-                    <label class="form-check-label" for="EstadoCheckChecked">Estado</label>
-                </div>
-                <br>
-            </div>
-
-            <!---Botón Submit Guardar --->
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </form>
-
-    <!---Tabla Categorías--->
-    <h2 class="mt-4 mb-4 text-center">Tabla de Categorías</h2>
-    <table class="table table-bordered border-primary">
-        <thead>
-            <tr class="table-primary">
-                <th class="text-center" scope="col">Nombre</th>
-                <th class="text-center" scope="col">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--Se asigna esta variable en el ProductoController--->
-            @foreach ($categorias as $categoria)
-            <tr>
-                <td class="text-center">{{$categoria->categoria}}</td>
-                <td class="text-center">
-                    <form action="{{ route ('categorias.show',['categoria' => $categoria->id] ) }}">
-                        @csrf
-                        <button class="btn btn-primary" type="submit">Editar</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+<!---Btn para crear--->
+<div class="mb-3">
+    <a href="{{route('categorias.create')}}"><button type="button" class="btn btn-primary"> Añadir nuevo Registro</button></a>
 </div>
+
+<!---Modal de Exito--->
+@if(session('success'))
+<script>
+    Swal.fire(
+        'Registro actualizado',
+        'Bien hecho',
+        'success'
+    )
+</script>
+@endif
+
+<!---Tabla Categorías--->
+<div class="card mb-4">
+
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Tabla de Categorías
+    </div>
+
+    <div class="card-body">
+        <table id="table_example" class="table table-striped">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($categorias as $categoria)
+                <tr>
+                    <td>{{$categoria->categoria}}</td>
+                    <td>{{$categoria->descripcion}}</td>
+                    <td>{{$categoria->estado}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <!--button type="button" class="btn btn-danger">Eliminar</button-->
+
+                            <form action="{{route('categorias.show',['categoria'=>$categoria->id])}}">
+                                @csrf
+                                <button type="submit" class="btn btn-warning">Editar</button>
+                            </form>
+
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$categoria->id}}">Ver</button>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Modal Para Ver-->
+                <div class="modal fade" id="exampleModal-{{$categoria->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Mostrando Categoría</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-4 col-form-label">ID:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" value="{{$categoria->id}}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-4 col-form-label">Nombre:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" value="{{$categoria->categoria}}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-4 col-form-label">Descripción:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" value="{{$categoria->descripcion}}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-4 col-form-label">Estado:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" value="{{$categoria->estado}}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-4 col-form-label">Fecha de creación:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" value="{{$categoria->created_at}}" disabled>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
 @endsection
 
 @section('footer')
-
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+
+<!---JS Datable Js--->
+<script>
+    window.addEventListener('DOMContentLoaded', event => {
+        const datatablesSimple = document.getElementById('table_example');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
+    });
+</script>
+@endsection
