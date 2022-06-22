@@ -82,6 +82,7 @@ return [
     |
     */
 
+    /**Cambiar el idioma al paquete en es */
     'locale' => 'es',
 
     /*

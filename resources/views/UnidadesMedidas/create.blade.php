@@ -1,14 +1,14 @@
 @extends('index')
-@section('title','Agregar Presentacion')
+@section('title')
 @section('styles')
 <!---Librería Mensajes emergentes--->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
-@section('h1_title','Agregar Presentacion')
+@section('h1_title','Agregar Unidad de Medida')
 @section('content')
 
 <div class="container w-100 border border-primary rounded p-4 mt-3">
-    <form action="{{route('presentaciones.store')}}" method="POST">
+    <form action="{{route('unidadesMedidas.store')}}" method="POST">
         @csrf
 
         @if (session('success'))
@@ -24,9 +24,9 @@
         <div class="row g-3">
 
             <div class="col-md-9">
-                <label for="inputPresentacion" class="form-label">Nombre:</label>
-                <input type="text" name="presentacion" class="form-control" id="inputPresentacion" value="{{old('presentacion')}}">
-                @error('presentacion')
+                <label for="inputMedida" class="form-label">Nombre:</label>
+                <input type="text" name="unidadMedida" class="form-control" id="inputMedida" value="{{old('unidadMedida')}}">
+                @error('unidadMedida')
                 <small class="text-danger">{{'*'.$message }}</small>
                 @enderror
             </div>
@@ -49,15 +49,14 @@
                 <br>
             </div>
 
-            <div class="col-12" style="text-align: center;">
+            <div class="col-12" style="text-align:center ;">
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <a href="{{route('presentaciones.index')}}"><button type="button" class="btn btn-secondary">Volver</button></a>
+                <a href="{{route('unidadesMedidas.index')}}"><button type="button" class="btn btn-secondary">Volver</button></a>
             </div>
 
         </div>
     </form>
 </div>
-
 @endsection
 
 @section('footer')

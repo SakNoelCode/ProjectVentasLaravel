@@ -34,6 +34,7 @@ class unidadesMedidasController extends Controller
     public function create()
     {
         //
+        return view('UnidadesMedidas.create');
     }
 
     /**
@@ -60,7 +61,7 @@ class unidadesMedidasController extends Controller
         }
         //dd($unidadMedida);
         $unidadMedida->save();
-        return redirect()->route('unidadesMedidas.index')->with('success', 'Registro exitoso');
+        return redirect()->route('unidadesMedidas.create')->with('success', 'Registro exitoso');
     }
 
     /**
@@ -111,7 +112,7 @@ class unidadesMedidasController extends Controller
         }
         //dd($unidadMedida);
         $unidadMedida->save();
-        return redirect()->route('unidadesMedidas.index')->with('success', 'Actualización exitosa');
+        return redirect()->route('unidadesMedidas.index')->with('success', 'Registro actualizado');
     }
 
     /**

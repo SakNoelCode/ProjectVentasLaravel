@@ -21,7 +21,7 @@ class presentaciones extends Model
     {
         return new Attribute(
 
-            /**Primeras letras en mayúsculas */
+            /**Obtener Primeras letras en mayúsculas */
             get:function($value){
                 return ucwords($value);
             }

@@ -1,8 +1,6 @@
 @extends('index')
 @section('title','Actualizar Presentacion')
 @section('styles')
-<!---Librería Mensajes emergentes--->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 @section('h1_title','Actualizar Presentacion')
 @section('content')
@@ -15,10 +13,10 @@
         <div class="row g-3">
 
             <div class="col-md-9">
-                <label for="inputMedida" class="form-label">Nombre:</label>
-                <input type="text" name="presentacion" class="form-control" id="inputMedida" value="{{old('presentacion',$presentacion->presentacion)}}">
+                <label for="inputPresentacion" class="form-label">Nombre:</label>
+                <input type="text" name="presentacion" class="form-control" id="inputPresentacion" value="{{old('presentacion',$presentacion->presentacion)}}">
                 @error('presentacion')
-                <small  class="text-danger">{{'*'.$message }}</small>
+                <small class="text-danger">{{'*'.$message }}</small>
                 @enderror
             </div>
 
@@ -26,7 +24,7 @@
                 <label for="inputDescription" class="form-label">Descripción:</label>
                 <textarea name="description" maxlength="80" class="form-control" id="inputDescription" rows="3">{{old('description',$presentacion->descripcion)}}</textarea>
                 @error('description')
-                <small  class="text-danger">{{'*'.$message }}</small>
+                <small class="text-danger">{{'*'.$message }}</small>
                 @enderror
             </div>
 
