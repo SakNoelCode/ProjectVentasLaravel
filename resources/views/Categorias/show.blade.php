@@ -1,8 +1,6 @@
 @extends('index')
 @section('title','Actualizar categoria')
 @section('styles')
-<!---Librería Mensajes emergentes--->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 @section('h1_title','Actualizar categoria')
 @section('content')

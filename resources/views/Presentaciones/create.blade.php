@@ -33,9 +33,7 @@
 
             <div class="col-md-12">
                 <label for="inputDescription" class="form-label">Descripción:</label>
-                <textarea name="description" maxlength="80" class="form-control" id="inputDescription" rows="3">
-                {{old('description')}}
-                </textarea>
+                <textarea name="description" maxlength="80" class="form-control" id="inputDescription" rows="3">{{old('description')}}</textarea>
                 @error('description')
                 <small class="text-danger">{{'*'.$message }}</small>
                 @enderror

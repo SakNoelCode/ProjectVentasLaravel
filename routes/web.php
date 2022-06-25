@@ -34,10 +34,10 @@ Route::get('/',[homeController::class,'index'])->name('panel');
 //Route::view('/home', 'layout') -> name('home');
 
 /* Retornar la vista clientes cuando estemos en la ruta /Clientes*/
-Route::view('/Clientes','Clientes.clientes') -> name('clientes');
+Route::get('/Clientes',[clientesController::class,'index']) -> name('clientes.index');
 
 /**Retornar la Vista productos cuando estemos en la ruta /Productos */
-Route::view('/Productos','Productos.productos') -> name('productos');
+Route::get('/Productos',[productosController::class,'index']) -> name('productos.index');
 
 /**Retornar la Vista Categorías cuando estemos en la ruta /Categorias */
 //Route::view('/Categorias','Categorias.categorias') -> name('categorias');
@@ -48,9 +48,9 @@ Route::view('/Productos','Productos.productos') -> name('productos');
 /**Establecer ruta para cuando la comunicación sea post, 
  * en este ejemplo se llama a la clase ClientesController
  * y a su función store */
-Route::post('/Clientes', [clientesController::class,'store']) -> name('clientes');
+Route::post('/Clientes', [clientesController::class,'store']) -> name('clientes.store');
 
-Route::post('/Productos',[productosController::class,'store']) -> name('productos');
+Route::post('/Productos',[productosController::class,'store']) -> name('productos.store');
 
 
 /*------------------RETORNAR CUANDO SE EJECUTEN METODOS GET---------------*/
@@ -59,13 +59,13 @@ Route::post('/Productos',[productosController::class,'store']) -> name('producto
  * en este ejemplo se llama a la clase ClientesController
  * y a su función index 
  * Los métodos GET se llaman automaticamente cuando se ejecute la ruta*/
-Route::get('/Clientes', [clientesController::class,'index']) -> name('clientes');
+Route::get('/Clientes/create',[clientesController::class,'create'])->name('clientes.create');
 /**La ruta debe contener un ID y se ejecutará la función show*/
-Route::get('/Clientes/{id}', [clientesController::class,'show']) -> name('clientes-show');
+Route::get('/Clientes/{id}', [clientesController::class,'show']) -> name('clientes.show');
 
-Route::get( '/Productos',[productosController::class,"index"]) -> name('productos');
+Route::get('/Productos/create',[productosController::class,'create'])->name('productos.create');
 
-Route::get('/Productos/{id}',[productosController::class,'show'])->name('productos-show');
+Route::get('/Productos/{id}',[productosController::class,'show'])->name('productos.show');
 
 Route::get('presentaciones/search',[PresentacionesController::class,'search'])->name('presentaciones-search');
 
@@ -75,13 +75,15 @@ Route::get('presentaciones/search',[PresentacionesController::class,'search'])->
  * DELETE se usa para eliminar un registro de la base de datos*/
 
  /**La ruta debe contener un ID y se ejecutará la función update*/
-Route::patch('/Clientes/{id}', [clientesController::class,'update']) -> name('clientes-update'); 
+Route::patch('/Clientes/{id}', [clientesController::class,'update']) -> name('clientes.update'); 
  /**La ruta debe contener un ID y se ejecutará la función destroy*/
-Route::delete('/Clientes/{id}', [clientesController::class,'destroy']) -> name('clientes-destroy');
+Route::delete('/Clientes/{id}', [clientesController::class,'destroy']) -> name('clientes.destroy');
 
-Route::patch('/Productos/{id}',[productosController::class,'update'])->name('productos-update');
+Route::put('/Productos/{id}',[productosController::class,'update'])->name('productos.update');
 
-Route::delete('/Productos/{id}',[productosController::class,'destroy'])->name('productos-destroy');
+Route::delete('/Productos/{id}',[productosController::class,'destroy'])->name('productos.destroy');
+
+Route::patch('/Productos/{id}',[productosController::class,'addStock'])->name('productos.addStock');
 
 
 

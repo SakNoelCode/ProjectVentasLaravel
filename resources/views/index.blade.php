@@ -8,7 +8,7 @@
   <meta name="description" content="Sitio web de la página Minersa S.R.L" />
   <meta name="author" content="Arcangel" />
   <title>@yield('title','Inicio')</title>
-  <!-- Font Awesome Icons -->"
+  <!-- Font Awesome Icons -->
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <!----Importación para BootStrap CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -70,7 +70,7 @@
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{route('clientes')}}">Nuevo registro</a>
+                <a class="nav-link" href="{{route('clientes.index')}}">Nuevo registro</a>
                 <a class="nav-link" href="#">Buscar</a>
               </nav>
             </div>
@@ -83,7 +83,7 @@
             </a>
             <div class="collapse" id="collapseLayoutsProduct" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{route('productos')}}">Nuevo registro</a>
+                <a class="nav-link" href="{{route('productos.index')}}">Nuevo registro</a>
                 <a class="nav-link" href="#">Buscar</a>
               </nav>
             </div>
