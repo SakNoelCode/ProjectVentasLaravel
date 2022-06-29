@@ -58,9 +58,11 @@
 
             <div class="col-md-4 mb-3">
                 <label for="inputCategory" class="form-label">Categoría:</label>
-                <select name="category_id" id="inputCategory" class="form-select" >
+                <select name="category_id" id="inputCategory" class="form-select">
                     @foreach ($categorias as $category)
+                    @if($category->estado == 'ACTIVO')
                     <option value="{{$category->id}}">{{ $category->categoria}}</option>
+                    @endif
                     @endforeach
                 </select>
                 @error('category_id')
@@ -72,7 +74,9 @@
                 <label for="inputUnidadmedida" class="form-label">Unidad de Medida:</label>
                 <select name="unidadmedida_id" id="inputUnidadmedida" class="form-select">
                     @foreach ($unidadesMedida as $unidadMedida)
+                    @if ($unidadMedida->estado == 'ACTIVO')
                     <option value="{{$unidadMedida->id}}">{{$unidadMedida->unidadMedida}}</option>
+                    @endif
                     @endforeach
                 </select>
                 @error('unidadmedida_id')
@@ -84,7 +88,9 @@
                 <label for="inputpresentacion" class="form-label">Presentación:</label>
                 <select name="presentacion_id" id="inputpresentacion" class="form-select">
                     @foreach ($presentaciones as $presentacion)
+                    @if($presentacion->estado == 'ACTIVO')
                     <option value="{{$presentacion->id}}">{{$presentacion->presentacion}}</option>
+                    @endif
                     @endforeach
                 </select>
                 @error('presentacion_id')

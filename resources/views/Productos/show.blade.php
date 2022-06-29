@@ -10,7 +10,7 @@
     <form action="{{ route('productos.update',['id' => $producto->id]) }}" method="POST">
         @method('PUT')
         @csrf
-        
+
         <div class="row g-3">
 
             <div class="col-md-6 mb-3">
@@ -52,7 +52,9 @@
                     @if ($producto->categoria_id == $category -> id)
                     <option selected value="{{$category->id}}">{{$category->categoria}}</option>
                     @else
+                    @if ($category->estado == 'ACTIVO')
                     <option value="{{$category->id}}">{{$category->categoria}}</option>
+                    @endif
                     @endif
                     @endforeach
                 </select>
@@ -68,7 +70,9 @@
                     @if ($producto->unidadMedida_id == $unidadMedida->id)
                     <option selected value="{{$unidadMedida->id}}">{{$unidadMedida->unidadMedida}}</option>
                     @else
+                    @if ($unidadMedida->estado == 'ACTIVO')
                     <option value="{{$unidadMedida->id}}">{{$unidadMedida->unidadMedida}}</option>
+                    @endif
                     @endif
                     @endforeach
                 </select>
@@ -84,7 +88,9 @@
                     @if ($producto->presentacion_id == $presentacion->id)
                     <option selected value="{{$presentacion->id}}">{{$presentacion->presentacion}}</option>
                     @else
+                    @if ($presentacion->estado == 'ACTIVO')
                     <option value="{{$presentacion->id}}">{{$presentacion->presentacion}}</option>
+                    @endif
                     @endif
                     @endforeach
                 </select>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\clientes;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 /**Controlador creado a través del comando php artisan make:controller clientesController 
  * Esta clase nos sirve para crear la lógica de negocio de nuestra aplicación
@@ -27,12 +29,11 @@ class clientesController extends Controller
          * required : El campo no puede estar vacío
          * min, max : Mínimo y máximo de carácteres
          */
-
         $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'dni' => 'required|max:8|min:8|unique:clientes|numeric',
-            'address' => 'required'
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'dni' => 'required|digits:8|unique:clientes|numeric',
+            'address' => 'required|max:255'
         ]);
 
         /**Se crea un objeto de la clase Clientes */
@@ -70,15 +71,44 @@ class clientesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        /**Se asigna a la variable cliente aquel que tenga el ID que hallo en su búsqueda */
+        $cliente = clientes::find($id);
 
+        $messages = [
+            'dni.required' => 'Debe ingresar un DNI',
+        ];
+
+        $customAttributes = [
+            'name' => 'nombres',
+            'surname' => 'apellidos',
+            'dni' => 'dni',
+            'address' => 'dirección',
+        ];
+
+        Validator::make(
+            $request->all(),
+            [
+                'dni' => [
+                    'required',
+                    'digits:8',
+                    'numeric',
+                    Rule::unique('clientes', 'DNI')->ignore($cliente->id),
+                ],
+                'name' => 'required|max:255',
+                'surname' => 'required|max:255',
+                'address' => 'required|max:255'
+            ],
+            $messages,
+            $customAttributes
+        )->validate();
+        /*
         $request->validate([
             'name' => 'required',
             'surname' => 'required',
             'dni' => 'required|max:8|min:8',
             'address' => 'required'
-        ]);
-        /**Se asigna a la variable cliente aquel que tenga el ID que hallo en su búsqueda */
-        $cliente = clientes::find($id);
+        ]);*/
+
         /**Se actualiza los valores de la tabla */
         $cliente->Name = $request->name;
         $cliente->Surname = $request->surname;
