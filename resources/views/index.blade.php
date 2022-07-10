@@ -62,6 +62,19 @@
             <!-----Encabezado Bloque-->
             <div class="sb-sidenav-menu-heading">Módulos</div>
 
+            <!-----Bloque Ventas-->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseVentas" aria-expanded="false" aria-controls="collapseVentas">
+              <div class="sb-nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
+              Ventas
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseVentas" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="{{route('ventas.index')}}">Nuevo registro</a>
+                <a class="nav-link" href="#">Buscar</a>
+              </nav>
+            </div>
+
             <!-----Bloque Clientes-->
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
@@ -208,14 +221,13 @@
 
   </div>
 
-
   <!---Importación JavaScript Bootstrap-->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
   <!--JS MAIN-->
   <script src="{{ asset('js/index.js') }}" type="text/javascript"></script>
-  
+
   @yield('scripts')
 
   @endauth

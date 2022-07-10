@@ -9,6 +9,7 @@ use App\Http\Controllers\productosController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\unidadesMedidasController;
 use App\Http\Controllers\presentacionesController;
+use App\Http\Controllers\ventaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -93,6 +94,7 @@ Route::patch('/Productos/{id}',[productosController::class,'addStock'])->name('p
 Route::resource('categorias',categoriasController::class);
 Route::resource('unidadesMedidas',unidadesMedidasController::class);
 Route::resource('presentaciones',presentacionesController::class);
+Route::resource('ventas',ventaController::class);
 
 /**Ruta para mostrar la vista de register */
 Route::get('/register', [registerController::class, 'show'])->name('register-show');
